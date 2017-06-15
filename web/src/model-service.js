@@ -24,9 +24,16 @@ function getTweet(info) {
     avatar: info.avatar,
     username: info.username,
     fullname: info.fullname,
-    text: tokenizer.join(chain),
+    text: decodeHtml(tokenizer.join(chain)),
     date: new Date().toLocaleDateString()
   };
+}
+
+const txt = document.createElement("textarea");
+
+function decodeHtml(html) {
+  txt.innerHTML = html;
+  return txt.value;
 }
 
 export default {
